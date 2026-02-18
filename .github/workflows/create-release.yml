@@ -1,4 +1,4 @@
-name: Create Tag on PR Merge
+name: Create Release Candidate
 
 on:
   pull_request:
