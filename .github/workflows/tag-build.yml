@@ -25,7 +25,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: cd my-vue-app && npm install
+        run: cd my-vue-app && npm build
 
       - name: Create build tag
         id: tag
