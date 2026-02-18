@@ -1,4 +1,4 @@
-name: Auto Build Tag on PR Merge
+name: Create Tag on PR Merge
 
 on:
   pull_request:
@@ -19,16 +19,37 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Create build tag
+        id: tag
         run: |
           BUILD_DATE=$(date -u +"%Y%m%d")
           SHORT_SHA=$(git rev-parse --short HEAD)
           BUILD_TAG="build-${BUILD_DATE}-${SHORT_SHA}"
-          
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           git tag -a "$BUILD_TAG" -m "Build from PR #${{ github.event.pull_request.number }}"
           git push origin "$BUILD_TAG"
-          
+
+          echo "tag=$BUILD_TAG" >> $GITHUB_OUTPUT
           echo "✅ Created tag: $BUILD_TAG"
+
+      - name: Create release zip
+        run: |
+          zip -r release.zip . -x ".git/*" -x ".github/*"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          files: release.zip
+          generate_release_notes: true
