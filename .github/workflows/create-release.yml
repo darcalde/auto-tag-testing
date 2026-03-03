@@ -5,6 +5,12 @@ on:
     types: [closed]
     branches: [master]
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch or ref to build from'
+        required: false
+        default: 'master'
+        type: string
 
 jobs:
   create-build-tag:
