@@ -30,6 +30,17 @@ jobs:
           npm ci
           npm run build
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install Python dependencies (production only)
+        run: poetry install --only main --no-interaction
+
       - name: Create build tag
         id: tag
         run: |
