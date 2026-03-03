@@ -8,6 +8,16 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 strands-agents = "^1.28.0"
+flask-pyoidc = "^3.14.3"
+flask-session = "^0.8.0"
+httptools = "^0.7.1"
+pre-commit = "^4.5.1"
+redis = "^7.2.1"
+termcolor = "^3.3.0"
+uvloop = "^0.22.1"
+websockets = "^16.0"
+boto3 = "^1.42.60"
+strands-agents-tools = "^0.2.21"
 
 [build-system]
 requires = ["poetry-core"]
