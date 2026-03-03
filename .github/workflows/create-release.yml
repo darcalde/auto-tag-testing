@@ -10,6 +10,8 @@ jobs:
   create-build-tag:
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    container:
+      image: amazonlinux:2023
     permissions:
       contents: write
 
