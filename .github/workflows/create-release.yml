@@ -30,13 +30,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install vue js dependencies
         run: |
           cd frontend
           npm ci
           npm run build
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           dnf install -y git python3.11 python3.11-pip nodejs npm zip tar gzip
           pip3.11 install pipx
