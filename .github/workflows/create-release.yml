@@ -54,6 +54,8 @@ jobs:
       - name: Create build tag
         id: tag
         run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          
           BUILD_DATE=$(date -u +"%Y%m%d")
           SHORT_SHA=$(git rev-parse --short HEAD)
           BUILD_TAG="build-${BUILD_DATE}-${SHORT_SHA}"
