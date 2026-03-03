@@ -38,8 +38,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          dnf install -y git python3.10 python3.10-pip nodejs npm zip tar gzip
-          pip3.10 install pipx
+          dnf install -y git python3.11 python3.11-pip nodejs npm zip tar gzip
+          pip3.11 install pipx
           pipx install poetry
 
       - name: Configure Poetry to use in-project venv
