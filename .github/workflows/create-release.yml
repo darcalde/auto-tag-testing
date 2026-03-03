@@ -16,6 +16,10 @@ jobs:
       contents: write
 
     steps:
+      - name: Install system dependencies
+        run: |
+          dnf install -y git tar gzip zip
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
