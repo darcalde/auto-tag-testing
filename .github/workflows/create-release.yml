@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd my-vue-app
+          cd frontend
           npm ci
           npm run build
 
@@ -39,7 +39,9 @@ jobs:
         run: pipx install poetry
 
       - name: Install Python dependencies (production only)
-        run: poetry install --only main --no-interaction
+        run: |
+          cd backend
+          poetry install --only main --no-interaction
 
       - name: Create build tag
         id: tag
