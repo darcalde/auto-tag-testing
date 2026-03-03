@@ -32,13 +32,11 @@ jobs:
           npm ci
           npm run build
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install Poetry
-        run: pipx install poetry
+      - name: Install dependencies
+        run: |
+          dnf install -y git python3.11 python3.11-pip nodejs npm zip tar gzip
+          pip3.10 install pipx
+          pipx install poetry
 
       - name: Configure Poetry to use in-project venv
         run: poetry config virtualenvs.in-project true
