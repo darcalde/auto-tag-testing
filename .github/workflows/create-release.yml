@@ -38,6 +38,9 @@ jobs:
       - name: Install Poetry
         run: pipx install poetry
 
+      - name: Configure Poetry to use in-project venv
+        run: poetry config virtualenvs.in-project true
+
       - name: Install Python dependencies (production only)
         run: |
           cd backend

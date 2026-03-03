@@ -1,24 +1,33 @@
-[tool.poetry]
-name = "my-project"
-version = "0.1.0"
-description = "A simple project"
-authors = ["darcalde_cisco <darcalde_cisco@users.noreply.github.com>"]
+[project]
+name = "samwise-chatbot"
+version = "2.0.0"
+description = "Samwise is an AI assistant designed to support the FedRAMP SRE team with incident response, change management, and daily operations."
+authors = [
+    {name = "FedRAMP SRE team", email = "fedramp_sre@cisco.com"}
+]
 readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "flask-pyoidc (==3.14.3)",
+    "flask-session (==0.5.0)",
+    "httptools (==0.6.4)",
+    "pre-commit (==4.2.0)",
+    "redis (==5.0.3)",
+    "termcolor (==2.4.0)",
+    "uvloop (==0.21.0)",
+    "websockets (==12.0)",
+    "boto3 (>=1.39.7,<2.0.0)",
+    "strands-agents-tools (>=0.2.9,<0.3.0)",
+    "strands-agents (>=1.0.0,<2.0.0)"
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-strands-agents = "^1.28.0"
-flask-pyoidc = "^3.14.3"
-flask-session = "^0.8.0"
-httptools = "^0.7.1"
-pre-commit = "^4.5.1"
-redis = "^7.2.1"
-termcolor = "^3.3.0"
-uvloop = "^0.22.1"
-websockets = "^16.0"
-boto3 = "^1.42.60"
-strands-agents-tools = "^0.2.21"
+[project.scripts]
+samwise-chatbot = "samwise_chatbot:main"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=25.1.0,<26.0.0"
+flake8 = ">=7.3.0,<8.0.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
