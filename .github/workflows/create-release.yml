@@ -44,7 +44,7 @@ jobs:
       - name: Install Python dependencies (production only)
         run: |
           cd backend
-          poetry install --only main --no-interaction
+          poetry install --only main --no-interaction --no-root
 
       - name: Create build tag
         id: tag
